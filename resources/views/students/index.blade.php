@@ -18,7 +18,8 @@ Liste des étudiants
                 <tbody>
                     @foreach ($students as $student)
                         <tr>
-                            <td><a href="/etudiant/{{ $student->id }}">{{ $student->id }}</a></td>
+                            <td><a href="{{ url('/etudiant',[ $student->id ])}}"
+                                >{{ $student->id }}</a></td>
                             <td> {{ $student->name }}</td>
                             <td>{{ $student->surname }}</td>
                             <td> {{ $student->email }}</td>
