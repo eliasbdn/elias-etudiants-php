@@ -14,6 +14,9 @@ Présentation de la classe
                 <a class="dropdown-item" href="{{ url('/section/associer',[ $section->id ])}}">Associer une matière</a>
             </div>
         </div>
+        <div><br></div>
+        <h3>Les matières appartenants à la classe</h3>
+        <div><br></div>
         <table class="table table-striped">
         <thead>
             <tr>
@@ -47,6 +50,9 @@ Présentation de la classe
         </tbody>
         </table>
 
+        <div><br></div>
+        <h3>Les élèves appartenants à la classe</h3>
+        <div><br></div>
         <table class="table table-striped">
             <thead>
                 <tr>
