@@ -14,7 +14,7 @@ Présentation de la classe
                 <a class="dropdown-item" href="/section/associer/{{ $section->id }}">Associer une matière</a>
             </div>
         </div>
-        <table class="table">
+        <table class="table table-striped">
         <thead>
             <tr>
             <th scope="col">#</th>
@@ -47,14 +47,13 @@ Présentation de la classe
         </tbody>
         </table>
 
-        <table class="table">
+        <table class="table table-striped">
             <thead>
                 <tr>
                 <th scope="col">#</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Email</th>
-                <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +61,7 @@ Présentation de la classe
                     <tr>
                         <td> {{ $student->id }}</td>
                         <td> {{ $student->name }}</td>
-                        <td><a href="/etudiant/{{ $student->id }}">{{ $student->surname }}</td></a>
+                        <td><a href="{{ url('/etudiant',[ $student->id ])}}">{{ $student->surname }}</td></a>
                         <td> {{ $student->email }}</td>
                         <td>
                             <div class="dropdown">
@@ -70,8 +69,8 @@ Présentation de la classe
                                     Options
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/etudiant/{{ $student->id }}">Modifier</a>
-                                    <a class="dropdown-item" href="/etudiant/delete/{{ $student->id }}">Supprimer</a>
+                                    <a class="dropdown-item" href="{{ url('/etudiant',[ $student->id ])}}">Modifier</a>
+                                    <a class="dropdown-item" href="{{ url('/etudiant/delete',[ $student->id ])}}">Supprimer</a>
                                 </div>
                             </div>
                         </td>

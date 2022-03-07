@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg rounded navbar-dark bg-primary" aria-label="Eleventh navbar example">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Campus</a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">Campus</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,22 +23,22 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Classes</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown09">
-                  <li><a class="dropdown-item" href="/sections/liste">Liste des classes</a></li>
-                  <li><a class="dropdown-item" href="/section/ajouter">Ajouter une classe</a></li>
+                  <li><a class="dropdown-item" href="{{ url('/sections/liste')}}">Liste des classes</a></li>
+                  <li><a class="dropdown-item" href="{{ url('/section/ajouter')}}">Ajouter une classe</a></li>
                 </ul>
               </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Matières</a>
               <ul class="dropdown-menu" aria-labelledby="dropdown09">
-                <li><a class="dropdown-item" href="/sujets/liste">Liste des matières</a></li>
-                <li><a class="dropdown-item" href="/sujets/ajouter">Ajouter une matière</a></li>
+                <li><a class="dropdown-item" href="{{ url('/sujets/liste')}}">Liste des matières</a></li>
+                <li><a class="dropdown-item" href="{{ url('/sujets/ajouter')}}">Ajouter une matière</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Etudiants</a>
               <ul class="dropdown-menu" aria-labelledby="dropdown09">
-                <li><a class="dropdown-item" href="/etudiants/liste">Liste des étudiants</a></li>
-                <li><a class="dropdown-item" href="/etudiant/ajouter">Ajouter un étudiant</a></li>
+                <li><a class="dropdown-item" href="{{ url('/etudiants/liste')}}">Liste des étudiants</a></li>
+                <li><a class="dropdown-item" href="{{ url('/etudiant/ajouter')}}">Ajouter un étudiant</a></li>
               </ul>
             </li>
           </ul>
