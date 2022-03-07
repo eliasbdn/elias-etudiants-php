@@ -77,5 +77,19 @@ class SubjectController extends Controller
         $subject->delete();
         return view('subjects.index', ['subjects'=>subject::all()]);
     }
+
+    public function edit(Request $request)
+    {
+        $subject = subject::findOrFail($request->id);
+        return view('subjects.modify',['subject'=>$subject]);
+    }
+
+    public function update(Request $request)
+    {
+        $subject = subject::findOrFail($request->id);
+        $subject->name = $request->name;
+        $subject->save();
+        return view('subjects.index', ['subjects'=>subject::all()]);
+    }
 }
 

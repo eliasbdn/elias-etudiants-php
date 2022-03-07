@@ -66,7 +66,25 @@ class StudentController extends Controller
     public function destroy(Request $request)
     {
         $student=student::FindOrFail($request->id);
-            $student->delete();
-            return view('students.index', ['students'=>student::all()]);
+        $student->delete();
+        return view('students.index', ['students'=>student::all()]);
+    }
+
+    public function edit(Request $request)
+    {
+        $student = student::findOrFail($request->id);
+        return view('students.modify',['student'=>$student, 'sections'=>section::all()]);
+    }
+
+    public function update(Request $request)
+    {
+        $student = student::findOrFail($request->id);
+        $student->name = $request->name;
+        $student->surname = $request->surname;
+        $student->email = $request->email;
+        $student->adress = $request->adress;
+        $student->section_id = $request->section;
+        $student->save();
+        return view('students.index', ['students'=>student::all()]);
     }
 }

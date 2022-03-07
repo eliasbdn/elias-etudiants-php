@@ -25,7 +25,7 @@ Liste des classes
                                         Options
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ url('/section',[ $section->id ])}}">Modifier</a>
+                                        <a class="dropdown-item" href="{{ url('/section/modifier',[ $section->id ])}}">Modifier</a>
                                         <a class="dropdown-item" href="{{ url('/section/delete',[ $section->id ])}}">Supprimer</a>
                                     </div>
                                 </div>

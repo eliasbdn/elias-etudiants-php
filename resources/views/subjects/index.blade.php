@@ -30,7 +30,7 @@ Liste des matières
                                         Options
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ url('/sujets',[ $subject->id ])}}">Modifier</a>
+                                        <a class="dropdown-item" href="{{ url('/sujets/modifier',[ $subject->id ])}}">Modifier</a>
                                         <a class="dropdown-item" href="{{ url('/sujets/delete',[ $subject->id ])}}">Supprimer</a>
                                     </div>
                                 </div>

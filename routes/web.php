@@ -31,11 +31,15 @@ Route::group(['middleware'=>'auth'],
         Route::get('/etudiant/ajouter', 'App\Http\Controllers\StudentController@create');
         Route::post('/etudiant/traitement', 'App\Http\Controllers\StudentController@store');
         Route::get('/etudiant/delete/{id}', 'App\Http\Controllers\StudentController@destroy');
+        Route::get('/etudiant/modifier/{id}', 'App\Http\Controllers\StudentController@edit');
+        Route::post('/etudiant/modifier-autorise', 'App\Http\Controllers\StudentController@update');
 
         // SUBJECTS
         Route::get('/sujets/ajouter', 'App\Http\Controllers\SubjectController@create');
         Route::post('/sujets/traitement', 'App\Http\Controllers\SubjectController@store');
         Route::get('/sujets/delete/{id}', 'App\Http\Controllers\SubjectController@destroy');
+        Route::get('/sujet/modifier/{id}', 'App\Http\Controllers\SubjectController@edit');
+        Route::post('/sujet/modifier-autorise', 'App\Http\Controllers\SubjectController@update');
 
         // SECTIONS
         Route::get('/section/ajouter', 'App\Http\Controllers\SectionController@create');
@@ -43,6 +47,8 @@ Route::group(['middleware'=>'auth'],
         Route::get('/section/delete/{id}', 'App\Http\Controllers\SectionController@destroy');
         Route::get('/section/associer/{id}', 'App\Http\Controllers\SectionController@associate');
         Route::post('/section/associer', 'App\Http\Controllers\SectionController@associateform');
+        Route::get('/section/modifier/{id}', 'App\Http\Controllers\SectionController@edit');
+        Route::post('/section/modifier-autorise', 'App\Http\Controllers\SectionController@update');
     });
 
 

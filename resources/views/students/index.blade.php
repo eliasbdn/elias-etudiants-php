@@ -29,7 +29,7 @@ Liste des étudiants
                                         Options
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ url('/etudiant',[ $student->id ])}}">Modifier</a>
+                                        <a class="dropdown-item" href="{{ url('/etudiant/modifier',[ $student->id ])}}">Modifier</a>
                                         <a class="dropdown-item" href="{{ url('/etudiant/delete',[ $student->id ])}}">Supprimer</a>
                                     </div>
                                 </div>
