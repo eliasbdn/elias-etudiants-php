@@ -79,7 +79,7 @@ button:focus {
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                 <div class="card">
                     <h3 class="text-center mb-4">Formulaire d'ajout</h3>
-                   <form method="POST" action="{{url('section/traitement')}}">
+                   <form method="POST" action="{{url('programme/traitement')}}">
                    {!! csrf_field() !!}
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="row mb-4">

@@ -31,9 +31,16 @@
               <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Matières</a>
               <ul class="dropdown-menu" aria-labelledby="dropdown09">
                 <li><a class="dropdown-item" href="{{ url('/sujets/liste')}}">Liste des matières</a></li>
-                <li><a class="dropdown-item" href="{{ url('/sujets/ajouter')}}">Ajouter une matière</a></li>
+                <li><a class="dropdown-item" href="{{ url('/sujet/ajouter')}}">Ajouter une matière</a></li>
               </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Programmes</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown09">
+                  <li><a class="dropdown-item" href="{{ url('/programmes/liste')}}">Liste des programmes</a></li>
+                  <li><a class="dropdown-item" href="{{ url('/programme/ajouter')}}">Ajouter un programme</a></li>
+                </ul>
+              </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Etudiants</a>
               <ul class="dropdown-menu" aria-labelledby="dropdown09">

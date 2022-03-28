@@ -1,5 +1,5 @@
 @section('title')
-Ajout d'une classe
+Modification d'une classe
 @stop
 
 @extends('default')
@@ -78,15 +78,16 @@ button:focus {
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                 <div class="card">
-                    <h3 class="text-center mb-4">Formulaire d'ajout</h3>
-                   <form method="POST" action="{{url('section/traitement')}}">
-                   {!! csrf_field() !!}
+                    <h3 class="text-center mb-4">Formulaire de modification</h3>
+                    <form method="POST" action="{{url('etudiant/modifier-autorise')}}">
+                        {!! csrf_field() !!}
+                        <input type="hidden" value="{{$student->id}}" name="id">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline">
-                                    <input type="text" id="name" name="name" class="form-control"/>
-                                    <label class="form-label" for="name">Nom de la classe</label>
+                                    <input type="text" id="name" name="name" class="form-control" value="{{$section->name}}"/>
+                                    <label class="form-label" for="name">Classe</label>
                                     @if($errors->has('name'))
                                     <div class="error text-danger">
                                         {{$errors->first('name')}}
@@ -96,6 +97,28 @@ button:focus {
                             </div>
                         </div>
 
+                        <!-- Text input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="adress" name="adress"class="form-control" value="{{$student->adress}}"/>
+                            <label class="form-label" for="adress">Adresse</label>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="email" id="email" name="email" class="form-control" value="{{$student->email}}"/>
+                            <label class="form-label" for="email">Email</label>
+                        </div>
+
+                        <!-- Classe -->
+                        <div class="form-outline mb-4">
+                            <select class="custom-select form-control" id="section" name="section">
+                             @foreach ($sections as $section)
+                                    <option value="{{ $section->id }}">{{$section->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
                         <!-- Submit button -->
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
@@ -103,5 +126,4 @@ button:focus {
             </div>
         </div>
     </div>
-
     @stop

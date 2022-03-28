@@ -35,7 +35,7 @@ Route::group(['middleware'=>'auth'],
         Route::post('/etudiant/modifier-autorise', 'App\Http\Controllers\StudentController@update');
 
         // SUBJECTS
-        Route::get('/sujets/ajouter', 'App\Http\Controllers\SubjectController@create');
+        Route::get('/sujet/ajouter', 'App\Http\Controllers\SubjectController@create');
         Route::post('/sujets/traitement', 'App\Http\Controllers\SubjectController@store');
         Route::get('/sujets/delete/{id}', 'App\Http\Controllers\SubjectController@destroy');
         Route::get('/sujet/modifier/{id}', 'App\Http\Controllers\SubjectController@edit');
@@ -49,6 +49,15 @@ Route::group(['middleware'=>'auth'],
         Route::post('/section/associer', 'App\Http\Controllers\SectionController@associateform');
         Route::get('/section/modifier/{id}', 'App\Http\Controllers\SectionController@edit');
         Route::post('/section/modifier-autorise', 'App\Http\Controllers\SectionController@update');
+
+        // PROGRAMS
+        Route::get('/programme/ajouter', 'App\Http\Controllers\ProgramController@create');
+        Route::post('/programme/traitement', 'App\Http\Controllers\ProgramController@store');
+        Route::get('/programme/delete/{id}', 'App\Http\Controllers\ProgramController@destroy');
+        Route::get('/programme/associer/{id}', 'App\Http\Controllers\ProgramController@associate');
+        Route::post('/programme/associer', 'App\Http\Controllers\ProgramController@associateform');
+        Route::get('/programme/modifier/{id}', 'App\Http\Controllers\ProgramController@edit');
+        Route::post('/programme/modifier-autorise', 'App\Http\Controllers\ProgramController@update');
     });
 
 
@@ -63,6 +72,10 @@ Route::get('/sujets/{id}', 'App\Http\Controllers\SubjectController@show');
 // SECTIONS
 Route::get('/sections/liste', 'App\Http\Controllers\SectionController@index');
 Route::get('/section/{id}', 'App\Http\Controllers\SectionController@show');
+
+// PROGRAMS
+Route::get('/programmes/liste', 'App\Http\Controllers\ProgramController@index');
+Route::get('/programme/{id}', 'App\Http\Controllers\ProgramController@show');
 
 Auth::routes();
 
