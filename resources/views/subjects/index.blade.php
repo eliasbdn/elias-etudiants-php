@@ -4,7 +4,7 @@ Liste des matières
 @extends('default')
     @section('content')
         <div class="p-5 mb-4">
-            <a href="{{ url('/sujets/ajouter')}}" class="btn btn-primary" type="button" role="button">Ajouter une matière</a>
+            <a href="{{ url('/sujet/ajouter')}}" class="btn btn-primary" type="button" role="button">Ajouter une matière</a>
             <div><br></div>
             <table class="table table-striped">
                 <thead>

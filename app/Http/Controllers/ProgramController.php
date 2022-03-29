@@ -2,82 +2,95 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\section_createdmail;
+use App\Models\program;
 use App\Models\section;
 use App\Models\subject;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\mail;
 
-class SectionController extends Controller
+class ProgramController extends Controller
 {
-
     public function index()
     {
-        return view('sections.index', ['sections'=>section::all()]);
+        return view('programs.index', ['programs'=>program::all()]);
     }
 
     public function create()
     {
-        return view('sections.add', ['sections'=>section::all()]);
+            return view('programs.add', ['subjects'=>subject::all()]);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|unique:subjects',
+        //     'duree' => 'required|integer',
+        //     'coeff' => 'required|integer',
 
-        DB::table('sections')->insert([
+        // ], [
+        //     'name.required'=>'La matière est obligatoire',
+        //     'name.unique'=>'La matière existe déjà',
+        //     'duree.required'=>'La durée est obligatoire',
+        //     'duree.integer'=>'La durée doit contenir uniquement des chiffres',
+        //     'coeff.required'=>'Le coefficient est obligatoire',
+        //     'coeff.integer'=>'Le coefficient doit contenir uniquement des chiffres',
+
+        // ]);
+
+        $program_id = DB::table('programs')->insertGetId([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
-        mail::to('elias.boudina@my-digital-school.org')->send(new section_createdmail($request->name));
-        return view('sections.index', ['sections'=>section::all()]);
+        $program = program::FindOrFail($program_id);
+        $subject_id = $request->subject;
+        // $program->sections()->sync([$subject_id => [
+        //     'duree' => $request -> duree,
+        //     'coefficient' => $request -> coeff,
+        //     ]], false
+        // );
+        return view('programs.index', ['programs'=>program::all()]);
     }
 
     public function show(Request $request)
     {
-        $section=section::FindOrFail($request->id);
-        return view('sections.show', ['section'=>$section]);
+        $subject=subject::FindOrFail($request->id);
+        return view('subjects.show', ['subject'=>$subject]);
     }
 
-
-
-    /** public function edit(section $section)
-    * {
-    *      //
-    *   }
-    *
-    *public function update(Request $request, section $section)
-    *{
-    *    //
-    *}
-    */
+    /**
+     * public function edit($id)
+     * {
+     *  //
+     * }
+     *
+     * public function update(Request $request, $id)
+     * {
+     *  //
+     * }
+     */
 
     public function destroy(Request $request)
     {
-        $section=section::FindOrFail($request->id);
-        $section->delete();
-        return view('sections.index', ['sections'=>section::all()]);
+        $subject=subject::FindOrFail($request->id);
+        $subject->delete();
+        return view('subjects.index', ['subjects'=>subject::all()]);
     }
 
-    public function associate(Request $request)
+    public function edit(Request $request)
     {
-        $section=section::FindOrFail($request->id);
-        return view('sections.associate', [
-            'section' =>$section,
-            'subjects'=>subject::all()]);
+        $subject = subject::findOrFail($request->id);
+        return view('subjects.modify',['subject'=>$subject]);
     }
 
-    public function associateform(Request $request)
+    public function update(Request $request)
     {
-        $section=section::FindOrFail($request->sectionID);
-            $subject=$request->matiere;
-            $section->subjects()->sync([$subject=>[
-                'duree'=>$request->duree,
-                'coefficient'=>$request->coeff]], false);
-                return view('sections.show', ['section'=>$section]);
+        $subject = subject::findOrFail($request->id);
+        $subject->name = $request->name;
+        $subject->save();
+        return view('subjects.index', ['subjects'=>subject::all()]);
     }
 }
+

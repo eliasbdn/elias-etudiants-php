@@ -75,7 +75,7 @@ Route::get('/section/{id}', 'App\Http\Controllers\SectionController@show');
 
 // PROGRAMS
 Route::get('/programmes/liste', 'App\Http\Controllers\ProgramController@index');
-Route::get('/programme/{id}', 'App\Http\Controllers\ProgramController@show');
+Route::get('/programmes/{id}', 'App\Http\Controllers\ProgramController@show');
 
 Auth::routes();
 

@@ -1,5 +1,5 @@
 @section('title')
-Ajout d'une classe
+Ajout d'une matière
 @stop
 
 @extends('default')
@@ -79,14 +79,14 @@ button:focus {
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                 <div class="card">
                     <h3 class="text-center mb-4">Formulaire d'ajout</h3>
-                   <form method="POST" action="{{url('programme/traitement')}}">
+                   <form method="GET" action="{{url('programmes/traitement')}}">
                    {!! csrf_field() !!}
                         <!-- 2 column grid layout with text inputs for the first and last names -->
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline">
-                                    <input type="text" id="name" name="name" class="form-control"/>
-                                    <label class="form-label" for="name">Nom de la classe</label>
+                                    <input type="text" id="name" name="name" class="form-control" required="required" value="{{old('name')}}"/>
+                                    <label class="form-label" for="name">Nom du programme</label>
                                     @if($errors->has('name'))
                                     <div class="error text-danger">
                                         {{$errors->first('name')}}
@@ -94,6 +94,36 @@ button:focus {
                                     @endif
                                 </div>
                             </div>
+                            {{-- <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="duree" name="duree" class="form-control" required="required" value="{{old('duree')}}"/>
+                                    <label class="form-label" for="duree">Durée</label>
+                                    @if($errors->has('duree'))
+                                    <div class="error text-danger">
+                                        {{$errors->first('duree')}}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="coeff" name="coeff" class="form-control" required="required" value="{{old('coeff')}}"/>
+                                    <label class="form-label" for="coeff">Coefficient</label>
+                                    @if($errors->has('coeff'))
+                                    <div class="error text-danger">
+                                        {{$errors->first('coeff')}}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div> --}}
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <select class="custom-select form-control" id="subject" name="subject">
+                             @foreach ($subjects as $subject)
+                                    <option value="{{ $subject->id }}">{{$subject->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- Submit button -->

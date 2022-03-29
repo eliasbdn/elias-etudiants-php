@@ -1,5 +1,5 @@
 @section('title')
-Modification d'une classe
+Modification d'une matière
 @stop
 
 @extends('default')
@@ -86,11 +86,22 @@ button:focus {
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline">
-                                    <input type="text" id="name" name="name" class="form-control" value="{{$section->name}}"/>
-                                    <label class="form-label" for="name">Classe</label>
+                                    <input type="text" id="name" name="name" class="form-control" value="{{$student->name}}"/>
+                                    <label class="form-label" for="name">Prénom</label>
                                     @if($errors->has('name'))
                                     <div class="error text-danger">
                                         {{$errors->first('name')}}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="surname" name="surname" class="form-control" value="{{$student->surname}}"/>
+                                    <label class="form-label" for="surname">Nom</label>
+                                    @if($errors->has('surname'))
+                                    <div class="error text-danger">
+                                        {{$errors->first('surname')}}
                                     </div>
                                     @endif
                                 </div>
