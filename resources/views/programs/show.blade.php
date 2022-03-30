@@ -8,7 +8,7 @@ Profil de la matière
             <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{ $subject->name}}</h5>
+                  <h5 class="card-title">{{ $program->name}}</h5>
                   <p class="card-text">Matière</p>
                 </div>
                 <ul class="list-group list-group-flush">

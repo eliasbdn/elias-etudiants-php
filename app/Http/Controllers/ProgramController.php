@@ -23,20 +23,9 @@ class ProgramController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|unique:subjects',
-        //     'duree' => 'required|integer',
-        //     'coeff' => 'required|integer',
-
-        // ], [
-        //     'name.required'=>'La matière est obligatoire',
-        //     'name.unique'=>'La matière existe déjà',
-        //     'duree.required'=>'La durée est obligatoire',
-        //     'duree.integer'=>'La durée doit contenir uniquement des chiffres',
-        //     'coeff.required'=>'Le coefficient est obligatoire',
-        //     'coeff.integer'=>'Le coefficient doit contenir uniquement des chiffres',
-
-        // ]);
+        $request->validate([
+            'name' => 'required',
+        ]);
 
         $program_id = DB::table('programs')->insertGetId([
             'name' => $request->name,
@@ -56,8 +45,8 @@ class ProgramController extends Controller
 
     public function show(Request $request)
     {
-        $subject=subject::FindOrFail($request->id);
-        return view('subjects.show', ['subject'=>$subject]);
+        $program=subject::FindOrFail($request->id);
+        return view('programs.show', ['program'=>$program]);
     }
 
     /**

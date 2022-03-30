@@ -4,7 +4,7 @@ Liste des programmes
 @extends('default')
     @section('content')
         <div class="p-5 mb-4">
-            <a href="{{ url('/programmes/ajouter')}}" class="btn btn-primary" type="button" role="button">Ajouter un programme</a>
+            <a href="{{ url('/programme/ajouter')}}" class="btn btn-primary" type="button" role="button">Ajouter un programme</a>
             <div><br></div>
             <table class="table table-striped">
                 <thead>
@@ -17,11 +17,11 @@ Liste des programmes
                 <tbody>
                     @foreach ($programs as $program)
                         <tr>
-                            <td><a href="{{ url('/programmes',[ $program->id ])}}">{{ $program->id }}</a></td>
+                            <td><a href="{{ url('/sujets',[ $program->id ])}}">{{ $program->id }}</a></td>
                             <td>{{ $program->name }}</td>
                             <td>
-                                @foreach ($program -> subjects as $subject)
-                                {{ $subject->name }}
+                                @foreach ($subject -> programs as $program)
+                                {{ $program->name }}
                                 @endforeach
                             </td>
                             <td>
@@ -40,4 +40,3 @@ Liste des programmes
                 </tbody>
             </table>
         </div>
-    @stop
