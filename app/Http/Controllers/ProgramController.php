@@ -21,27 +21,36 @@ class ProgramController extends Controller
             return view('programs.add', ['subjects'=>subject::all()]);
     }
 
+
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
         ]);
 
-        $program_id = DB::table('programs')->insertGetId([
+        DB::table('programs')->insert([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
-        $program = program::FindOrFail($program_id);
-        $subject_id = $request->subject;
-        // $program->sections()->sync([$subject_id => [
-        //     'duree' => $request -> duree,
-        //     'coefficient' => $request -> coeff,
-        //     ]], false
-        // );
         return view('programs.index', ['programs'=>program::all()]);
     }
+
+    // public function store(Request $request)
+    // {
+
+    //     $request->validate([
+    //         'name' => 'required',
+    //     ]);
+
+    //     $program_id = DB::table('programs')->insertGetId([
+    //         'name' => $request->name,
+    //         'slug' => Str::slug($request->name),
+    //         'created_at' => now(),
+    //         'updated_at' => now(),
+    //     );
+    //     return view('programs.index', ['programs'=>program::all()]);
+    // }
 
     public function show(Request $request)
     {

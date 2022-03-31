@@ -20,8 +20,8 @@ Liste des programmes
                             <td><a href="{{ url('/sujets',[ $program->id ])}}">{{ $program->id }}</a></td>
                             <td>{{ $program->name }}</td>
                             <td>
-                                @foreach ($subject -> programs as $program)
-                                {{ $program->name }}
+                                @foreach ($program -> subjects as $subject)
+                                {{ $subject->name }}
                                 @endforeach
                             </td>
                             <td>
